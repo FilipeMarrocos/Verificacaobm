@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioLeve Primavera | Bebidas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --verde: #1a4a2e;
+      --verde-claro: #2d6b44;
+      --creme: #f7f3ec;
+      --dourado: #c8a84b;
+      --texto: #1c1c1c;
+      --cinza: #6b6b6b;
+      --borda: #e0d8cc;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--creme);
+      color: var(--texto);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--verde);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--creme);
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(247,243,236,0.8);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--dourado); }
+
+    /* HERO */
+    .hero {
+      background: var(--verde);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      color: var(--dourado);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      color: var(--creme);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+    }
+    .hero p {
+      color: rgba(247,243,236,0.75);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--dourado);
+      color: var(--verde);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.8rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.88; }
+
+    /* SECTIONS */
+    section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+    section + section { border-top: 1px solid var(--borda); }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--verde);
+      margin-bottom: 1rem;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--verde-claro);
+      margin-bottom: 0.4rem;
+    }
+    p { color: var(--cinza); margin-bottom: 1rem; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--borda);
+      padding: 1.5rem;
+      border-radius: 4px;
+    }
+    .card-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+
+    /* CONTATO */
+    .contato-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .contato-item { display: flex; flex-direction: column; gap: 0.3rem; }
+    .contato-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dourado); }
+    .contato-value { font-size: 0.95rem; color: var(--texto); }
+
+    /* POLITICA / TERMOS */
+    .doc-content h3 { margin-top: 1.5rem; margin-bottom: 0.4rem; font-size: 1rem; color: var(--verde); }
+    .doc-content p { font-size: 0.92rem; }
+    .doc-content ul { padding-left: 1.2rem; color: var(--cinza); font-size: 0.92rem; margin-bottom: 1rem; }
+    .doc-content ul li { margin-bottom: 0.4rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--verde);
+      color: rgba(247,243,236,0.6);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.82rem;
+    }
+    footer strong { color: var(--creme); }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#inicio">BioLeve Primavera</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#produtos">Produtos</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="#privacidade">Privacidade</a></li>
+    <li><a href="#termos">Termos</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="inicio">
+  <p class="hero-eyebrow">Varejo de Bebidas · São Paulo, SP</p>
+  <h1>Qualidade e variedade em cada gole</h1>
+  <p>A BioLeve Primavera oferece uma seleção cuidadosa de bebidas para atender consumidores e estabelecimentos com agilidade e confiança.</p>
+  <a href="#contato" class="btn">Entre em contato</a>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <h2>Sobre nós</h2>
+  <p>A BioLeve Primavera é uma empresa varejista de bebidas com sede em São Paulo, SP, registrada sob o CNPJ 41.961.359/0001-02. Atuamos na comercialização e distribuição de bebidas diversas, com foco em atendimento ágil, produtos de qualidade e relacionamento próximo com nossos clientes.</p>
+  <p>Nossa operação é conduzida com responsabilidade, transparência e compromisso com as normas vigentes do setor.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🍃</div>
+      <h3>Qualidade garantida</h3>
+      <p>Trabalhamos apenas com fornecedores regularizados e produtos dentro dos padrões de qualidade exigidos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <h3>Variedade de produtos</h3>
+      <p>Amplo portfólio de bebidas para diferentes perfis de consumo e necessidades comerciais.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Atendimento direto</h3>
+      <p>Canal de comunicação ativo para pedidos, dúvidas e parcerias com clientes e fornecedores.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section id="produtos">
+  <h2>Nossos produtos</h2>
+  <p>Comercializamos uma variedade de bebidas para consumo pessoal e institucional, incluindo:</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">💧</div>
+      <h3>Águas e sucos</h3>
+      <p>Água mineral, água com gás e sucos naturais e industrializados de diferentes marcas.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🥤</div>
+      <h3>Refrigerantes</h3>
+      <p>Linha completa de refrigerantes nacionais e importados em diferentes embalagens.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🍺</div>
+      <h3>Cervejas e bebidas especiais</h3>
+      <p>Seleção de cervejas artesanais e bebidas especiais para consumidores e estabelecimentos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <h2>Contato</h2>
+  <p>Entre em contato para pedidos, dúvidas ou parcerias comerciais.</p>
+  <div class="contato-grid">
+    <div class="contato-item">
+      <span class="contato-label">E-mail</span>
+      <span class="contato-value">bioleveprimavera@gmail.com</span>
+    </div>
+    <div class="contato-item">
+      <span class="contato-label">Endereço</span>
+      <span class="contato-value">R. Tiquatira, 717 – Loja<br>Bosque da Saúde – São Paulo, SP<br>CEP 04.137-111</span>
+    </div>
+    <div class="contato-item">
+      <span class="contato-label">CNPJ</span>
+      <span class="contato-value">41.961.359/0001-02</span>
+    </div>
+    <div class="contato-item">
+      <span class="contato-label">Razão Social</span>
+      <span class="contato-value">Maria Jose dos Santos</span>
+    </div>
+  </div>
+</section>
+
+<!-- POLITICA DE PRIVACIDADE -->
+<section id="privacidade">
+  <h2>Política de Privacidade</h2>
+  <p><em>Última atualização: junho de 2025</em></p>
+  <div class="doc-content">
+    <p>A BioLeve Primavera, inscrita sob o CNPJ 41.961.359/0001-02, está comprometida com a proteção dos dados pessoais de seus clientes, parceiros e visitantes, em conformidade com a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018).</p>
+
+    <h3>1. Dados coletados</h3>
+    <p>Podemos coletar as seguintes informações:</p>
+    <ul>
+      <li>Nome completo</li>
+      <li>Endereço de e-mail</li>
+      <li>Número de telefone</li>
+      <li>Endereço para entrega ou correspondência</li>
+      <li>Dados de navegação (cookies e logs de acesso)</li>
+    </ul>
+
+    <h3>2. Finalidade do uso dos dados</h3>
+    <p>Os dados coletados são utilizados para:</p>
+    <ul>
+      <li>Processamento de pedidos e atendimento ao cliente</li>
+      <li>Comunicação sobre produtos, promoções e atualizações</li>
+      <li>Cumprimento de obrigações legais e fiscais</li>
+      <li>Melhoria dos nossos serviços</li>
+    </ul>
+
+    <h3>3. Compartilhamento de dados</h3>
+    <p>Não vendemos, alugamos ou compartilhamos seus dados pessoais com terceiros para fins comerciais, exceto quando necessário para prestação do serviço (ex: transportadoras) ou por exigência legal.</p>
+
+    <h3>4. Armazenamento e segurança</h3>
+    <p>Seus dados são armazenados em ambiente seguro e protegido. Adotamos medidas técnicas e administrativas para prevenir acessos não autorizados, perdas ou divulgações indevidas.</p>
+
+    <h3>5. Direitos do titular</h3>
+    <p>Você tem direito a acessar, corrigir, excluir ou solicitar a portabilidade dos seus dados a qualquer momento, entrando em contato pelo e-mail bioleveprimavera@gmail.com.</p>
+
+    <h3>6. Cookies</h3>
+    <p>Este site pode utilizar cookies para melhorar a experiência de navegação. Você pode desativá-los nas configurações do seu navegador.</p>
+
+    <h3>7. Contato</h3>
+    <p>Para dúvidas sobre esta política, entre em contato: bioleveprimavera@gmail.com</p>
+  </div>
+</section>
+
+<!-- TERMOS DE USO -->
+<section id="termos">
+  <h2>Termos de Uso</h2>
+  <p><em>Última atualização: junho de 2025</em></p>
+  <div class="doc-content">
+    <p>Ao acessar e utilizar este site, você concorda com os termos e condições descritos abaixo. Caso não concorde, solicitamos que não utilize nossos serviços.</p>
+
+    <h3>1. Uso do site</h3>
+    <p>Este site tem caráter institucional e informativo. As informações aqui disponibilizadas referem-se à BioLeve Primavera, varejista de bebidas sediada em São Paulo, SP.</p>
+
+    <h3>2. Propriedade intelectual</h3>
+    <p>Todo o conteúdo deste site — textos, logotipos, imagens e demais elementos — é de propriedade da BioLeve Primavera ou de seus licenciantes. É vedada a reprodução sem autorização prévia.</p>
+
+    <h3>3. Responsabilidades</h3>
+    <p>A BioLeve Primavera não se responsabiliza por:</p>
+    <ul>
+      <li>Falhas técnicas de acesso ao site</li>
+      <li>Uso indevido das informações por terceiros</li>
+      <li>Danos decorrentes de vírus ou ataques externos</li>
+    </ul>
+
+    <h3>4. Links externos</h3>
+    <p>Este site pode conter links para páginas de terceiros. Não nos responsabilizamos pelo conteúdo ou práticas de privacidade desses sites.</p>
+
+    <h3>5. Alterações nos termos</h3>
+    <p>Estes termos podem ser atualizados a qualquer momento. Recomendamos a consulta periódica desta página.</p>
+
+    <h3>6. Foro</h3>
+    <p>Fica eleito o foro da Comarca de São Paulo, SP, para dirimir quaisquer controvérsias decorrentes deste documento.</p>
+
+    <h3>7. Contato</h3>
+    <p>Dúvidas: bioleveprimavera@gmail.com</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>BioLeve Primavera</strong> · CNPJ 41.961.359/0001-02</p>
+  <p style="margin-top:0.4rem">R. Tiquatira, 717 – Loja · Bosque da Saúde · São Paulo, SP · CEP 04.137-111</p>
+  <p style="margin-top:0.4rem">bioleveprimavera@gmail.com</p>
+</footer>
+
+</body>
+</html>
